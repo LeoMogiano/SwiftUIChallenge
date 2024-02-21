@@ -101,5 +101,5 @@ class Persona {
     }
 }
 
-var myPersona = Persona(name: "Leo", age: 23)
+var myPersona = Persona(name: "Leo Mogiano", age: 23)
 print(myPersona.name)
