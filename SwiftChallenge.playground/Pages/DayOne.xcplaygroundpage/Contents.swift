@@ -58,4 +58,3 @@ let d = Double(a) + b
 print("This is a Int : \(c)")
 
 print("This is a Double : \(d)")
-
