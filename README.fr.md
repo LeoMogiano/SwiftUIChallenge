@@ -1,46 +1,18 @@
-# Poke Flutter
+# Bienvenue à 100 Days of SwiftUI !
 
 [English](./README.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [日本語](./README.jp.md)
 
-## Description
+<br>
 
-Poke Flutter est une application mobile développée avec Flutter qui fournit des informations sur les Pokémon. L'application utilise la [PokéAPI](https://pokeapi.co/) pour obtenir des données détaillées sur différents Pokémon, permettant aux utilisateurs d'explorer et d'en apprendre davantage sur leurs personnages préférés.
+<div align="center">
+    <img src="/Assets/apple.png" alt="Logo d'Apple" width="90">
+    <img src="/Assets/swift.png" alt="Logo de Swift" width="135">
+</div>
 
-## Caractéristiques Principales
+<br>
 
-- **Liste des Pokémon**: Affiche une liste complète des Pokémon avec des images et des données de base.
+Bienvenue à **100 Days of SwiftUI**, où nous nous embarquons dans un voyage pour maîtriser SwiftUI ensemble ! Ce défi complet offre une multitude de ressources, notamment des vidéos, des tutoriels, des tests, et plus encore, le tout sélectionné parmi mon travail sur Hacking with Swift.
 
-### En Cours 
+Ce défi est adapté aux débutants qui aspirent à construire de véritables applications iOS mais qui peinent à trouver un cours adapté et gratuit. Si vous en faites partie, bienvenue à bord ! Plongeons dans SwiftUI et libérons votre potentiel dans le monde iOS.
 
-- ~**Recherche de Pokémon**: Permet aux utilisateurs de rechercher des informations détaillées sur n'importe quel Pokémon.~
-  
-- ~**Informations Détaillées**: Fournit des détails tels que les statistiques, les capacités, et plus encore pour chaque Pokémon.~
-
-## Configuration Requise
-
-- Flutter SDK: Assurez-vous d'avoir le Flutter SDK installé.
-- Exécutez `flutter pub get` pour installer les dépendances nécessaires.
-
-## Instructions d'Utilisation
-
-1. Clonez ou téléchargez le dépôt.
-2. Ouvrez le projet dans votre éditeur de code Flutter préféré.
-3. Connectez un appareil mobile ou démarrez un émulateur.
-4. Exécutez `flutter run` pour compiler et lancer l'application sur l'appareil/émulateur.
-
-## Captures d'Écran
-
-| **Accueil** | **Liste des Pokémon** |
-|:-----------------------:|:-----------------------:|
-| ![Accueil](./screenshots/s1.png) | ![Liste des Pokémon](./screenshots/s2.png) |
-
-## Contributions
-
-- Forkez le dépôt.
-- Créez une nouvelle branche pour vos modifications.
-- Effectuez les changements et les commits nécessaires.
-- Soumettez une pull request avec vos modifications proposées.
-
-## Licence
-
-Ce projet est sous licence [MIT](LICENSE). Vous pouvez obtenir plus d'informations en consultant le fichier [LICENSE](LICENSE) du projet.
+Prêt à commencer ? [Rejoignez-nous ici !](https://www.hackingwithswift.com/100/swiftui)
