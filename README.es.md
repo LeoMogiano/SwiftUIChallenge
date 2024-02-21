@@ -1,46 +1,18 @@
-# Poke Flutter
+# ¡Bienvenido a 100 Días de SwiftUI!
 
 [English](./README.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [日本語](./README.jp.md)
 
-## Descripción
+<br>
 
-Poke Flutter es una aplicación móvil desarrollada con Flutter que proporciona información sobre Pokémon. La aplicación utiliza la [PokéAPI](https://pokeapi.co/) para obtener datos detallados sobre diferentes Pokémon, permitiendo a los usuarios explorar y aprender más sobre sus personajes favoritos.
+<div align="center">
+    <img src="/Assets/apple.png" alt="Logo de Apple" width="90">
+    <img src="/Assets/swift.png" alt="Logo de Swift" width="135">
+</div>
 
-## Características Principales
+<br>
 
-- **Listado de Pokémon**: Muestra una lista completa de Pokémon con imágenes y datos básicos.
+¡Bienvenido a **100 Días de SwiftUI**! Aquí emprendemos un viaje para dominar SwiftUI juntos. Este desafío integral ofrece una gran cantidad de recursos, incluyendo videos, tutoriales, pruebas y más, todo seleccionado de mi trabajo en Hacking with Swift.
 
-### En Proceso 
+Este desafío está diseñado para principiantes que aspiran a construir aplicaciones reales para iOS pero luchan por encontrar un curso adecuado y gratuito. Si eres uno de ellos, ¡bienvenido a bordo! Vamos a sumergirnos en SwiftUI y liberar tu potencial en el mundo de iOS.
 
-- ~**Búsqueda de Pokémon**: Permite a los usuarios buscar información detallada sobre cualquier Pokémon.~
-  
-- ~**Información Detallada**: Proporciona detalles como estadísticas, habilidades y más para cada Pokémon.~
-
-## Requisitos de Instalación
-
-- Flutter SDK: Asegúrate de tener el Flutter SDK instalado.
-- Ejecuta `flutter pub get` para instalar las dependencias necesarias.
-
-## Instrucciones de Uso
-
-1. Clona o descarga el repositorio.
-2. Abre el proyecto en tu editor de código Flutter preferido.
-3. Conecta un dispositivo móvil o inicia un emulador.
-4. Ejecuta `flutter run` para compilar y lanzar la aplicación en el dispositivo/emulador.
-
-## Capturas de Pantalla
-
-| **Inicio** | **Listado de Pokemon** |
-|:-----------------------:|:-----------------------:|
-| ![Inicio](./screenshots/s7.png) | ![Listado de Pokemon](./screenshots/s8.png) |
-
-## Contribuciones
-
-- Haz un fork del repositorio.
-- Crea una nueva rama para tus cambios.
-- Realiza los cambios y commits necesarios.
-- Envía un pull request con tus cambios propuestos.
-
-## Licencia
-
-Este proyecto está bajo la licencia [MIT](LICENSE). Puedes obtener más información consultando el archivo [LICENSE](LICENSE) del proyecto.
+¿Listo para empezar? [¡Únete aquí!](https://www.hackingwithswift.com/100/swiftui)
