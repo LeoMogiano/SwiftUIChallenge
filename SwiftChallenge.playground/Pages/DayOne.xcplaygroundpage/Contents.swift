@@ -47,7 +47,7 @@ print(reallyBig)
 
 // DecimalStructure
 
-let number = 0.1 + 0.2
+let numberXd = 0.1 + 0.2
 print(number)
 
 let a = 1
