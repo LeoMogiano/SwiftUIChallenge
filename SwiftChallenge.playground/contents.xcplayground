@@ -3,5 +3,6 @@
     <pages>
         <page name='StringStructure'/>
         <page name='Hello'/>
+        <page name='NumberStructure'/>
     </pages>
 </playground>
