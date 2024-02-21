@@ -4,7 +4,7 @@
 
 <div align="center">
     <img src="/Assets/apple.png" alt="Logo de Apple" width="90">
-    <img src="/Assets/swift.png" alt="Logo de Swift" width="90">
+    <img src="/Assets/swift.png" alt="Logo de Swift" width="190">
 </div>
 
 Welcome to **100 Days of SwiftUI**, where we embark on a journey to master SwiftUI together! This comprehensive challenge offers a wealth of resources, including videos, tutorials, tests, and more, all curated from my work on Hacking with Swift.
