@@ -18,5 +18,3 @@ print(result.uppercased())
 
 print(movie.hasPrefix("A day"))
 print(file.hasSuffix(".jpg"))
-
-
