@@ -2,7 +2,7 @@
 
 [English](./README.md) | [Español](./README.es.md) | [Français](./README.fr.md) | [日本語](./README.jp.md)
 
-<div align="center">
+<div align="center" style="display: flex; justify-content: center; gap: 20px;">
     <img src="/Assets/apple.png" alt="Logo de Apple" width="90">
     <img src="/Assets/swift.png" alt="Logo de Swift" width="135">
 </div>
