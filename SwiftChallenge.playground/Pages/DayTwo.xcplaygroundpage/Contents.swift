@@ -1,12 +1,12 @@
-import Cocoa
+import Foundation
 
 // Boolean Structure
 
 let filename = "paris.jpg"
 print(filename.hasSuffix(".jpg"))
 
-let number = 120
-print(number.isMultiple(of: 3))
+let numberXd = 120
+print(numberXd.isMultiple(of: 3))
 
 let goodDogs = true
 var gameOver = false
