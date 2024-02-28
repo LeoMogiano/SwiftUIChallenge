@@ -80,7 +80,7 @@ func sqrtMogi(num: Int) throws -> Int {
     
 }
 
-let numero = - 5
+let numero = -5
 
 do {
     let result = try sqrtMogi(num: numero)
