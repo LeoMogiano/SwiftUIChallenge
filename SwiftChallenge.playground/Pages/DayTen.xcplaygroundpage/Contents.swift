@@ -140,6 +140,21 @@ print()
 app.contacts.append("Allen W")
 print()
 app.contacts.append("Ish S")
-
+print()
 
 // In practice, willSet is used much less than didSet, but you might still see it from time to time so it’s important you know it exists.
+
+// Custom Initializator
+
+struct Player {
+    let name: String
+    let number: Int
+
+    init(name: String) {
+        self.name = name
+        number = Int.random(in: 1...99)
+    }
+}
+
+let player = Player(name: "Megan R")
+print(player.number)
