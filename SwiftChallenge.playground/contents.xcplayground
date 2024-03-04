@@ -13,5 +13,6 @@
         <page name='DayNine'/>
         <page name='DayTen'/>
         <page name='DayEleven'/>
+        <page name='DayTwelve'/>
     </pages>
 </playground>
