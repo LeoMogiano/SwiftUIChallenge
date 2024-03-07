@@ -8,16 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    let characters = ["Luffy", "Zoro", "Sanji"]
+    @State private var selectedCharacter = "Luffy" // Apple recommends use State with private
+    // name binding state allows read and write the value
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, WeSplit!")
+//        NavigationStack {
+//            Form {
+//                Picker("Select your student", selection: $selectedStudent) {
+//                    ForEach(students, id: \.self) {
+//                        Text($0)
+//                    }
+//                }
+//            }
+//        }
+        
+        NavigationStack {
+            Form {
+                Picker("Select a character", selection: $selectedCharacter) {
+                    ForEach(characters, id: \.self) {
+                        Text($0)
+                    }
+                }
+            }
         }
-        .padding()
     }
 }
+
 
 #Preview {
     ContentView()
