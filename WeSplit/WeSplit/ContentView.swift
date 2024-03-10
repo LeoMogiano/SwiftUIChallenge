@@ -8,49 +8,52 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var checkAumount = 0.0
+    @State private var checkAumount = 0.0 // Apple recommends use State with private
     @State private var numberOfPeople = 2
     @State private var tipPercentage = 20
-    
+    // name binding state allows read and write the value $checkAmount
     let tipPercentages = [10, 15, 20, 25, 0]
     
-    let characters = ["Luffy", "Zoro", "Sanji"]
-    @State private var selectedCharacter = "Luffy" // Apple recommends use State with private
-    // name binding state allows read and write the value
+    var totalPerPerson: Double {
+        let peopleCount = Double(numberOfPeople + 2)
+        let tipSelection = Double(tipPercentage)
+        let tipValue = checkAumount / 100 * tipSelection
+        let grandTotal = checkAumount + tipValue
+        let amoutPerPerson = grandTotal / peopleCount
+        return amoutPerPerson
+    }
+    
     var body: some View {
-        //        NavigationStack {
-        //            Form {
-        //                Picker("Select your student", selection: $selectedStudent) {
-        //                    ForEach(students, id: \.self) {
-        //                        Text($0)
-        //                    }
-        //                }
-        //            }
-        //        }
         NavigationStack {
-            
             Form {
-                //                Picker("Select a character", selection: $selectedCharacter) {
-                //                    ForEach(characters, id: \.self) {
-                //                        Text($0)
-                //                    }
-                //                }
                 Section {
-                    TextField("Amount", value: $checkAumount, format: .currency(code:Locale.current.currency?.identifier ?? "USD"))
-                        .keyboardType(.numbersAndPunctuation)
-                    Picker("Number of people", selection: $numberOfPeople) {
+                    TextField("Monto", value: $checkAumount, format: .currency(code:Locale.current.currency?.identifier ?? "USD"))
+                        .keyboardType(.decimalPad)
+                        
+                    Picker("Numero de personas", selection: $numberOfPeople) {
                         ForEach(2..<11) {
-                            Text("\($0)")
+                            Text("\($0) personas")
                         }
                     }
                     .pickerStyle(.navigationLink)
                 }
+                Section("¿Cuanto quieres dar de propina?") {
+                    Picker("Porcentajes de Propina",selection: $tipPercentage) {
+                        ForEach(tipPercentages, id: \.self) {
+                            Text($0, format: .percent
+                            )
+                        }
+                    }.pickerStyle(.segmented)
+                }
+                Section {
+                    Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                }
                 
-                
-            }.navigationTitle("WeSplit")
+            }.navigationTitle("PropinaGenerator")
         }
         
     }
+    
 }
 
 
