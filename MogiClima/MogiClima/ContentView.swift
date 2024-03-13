@@ -12,6 +12,8 @@ struct ContentView: View {
     @State private var initialUnit = "ºC"
     @State private var finalUnit = "ºC"
     
+    @FocusState private var initValueFocus: Bool
+    
     let temperatureUnits = ["ºC", "K", "ºF"]
     
     func converTemp(value: Double,from initialUnit: String, to finalUnit: String) ->Double {
@@ -42,10 +44,8 @@ struct ContentView: View {
     }
     
     var finalValue: Double {
-        
         return converTemp(value: initialValue, from: initialUnit, to: finalUnit)
     }
-    
     
     var body: some View {
         NavigationStack {
@@ -54,6 +54,7 @@ struct ContentView: View {
                     HStack {
                         TextField("Temp. Inicial",value: $initialValue, format: .number )
                             .keyboardType(.decimalPad)
+                            .focused($initValueFocus)
                         Picker("Unidad de Temperatura", selection: $initialUnit) {
                             ForEach(temperatureUnits, id: \.self) {
                                 Text($0)
@@ -74,6 +75,13 @@ struct ContentView: View {
                     
                 }
             }.navigationTitle("TempConverter")
+                .toolbar{
+                    if initValueFocus {
+                        Button("OK") {
+                            initValueFocus = false
+                        }
+                    }
+                }
         }
     }
 }
