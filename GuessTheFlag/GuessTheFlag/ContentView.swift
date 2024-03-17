@@ -9,14 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var countries = ["Estonia", "France", "Germany", "Ireland", "Italy",
+    @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy",
                             "Nigeria", "Poland", "Spain", "Ukraine", "US"].shuffled()
     
-    @State var correctAnswer = Int.random(in: 0...2)
+    @State private var correctAnswer = Int.random(in: 0...2)
     
     @State private var showingScore = false
     @State private var scoreTitle = ""
     @State private var score = 0
+    @State private var phase = 0
+    @State private var completeGame = false
     
     var body: some View {
         
@@ -28,7 +30,11 @@ struct ContentView: View {
                 Text("Guess the flag")
                     .foregroundColor(.white)
                     .font(.largeTitle.bold())
-                VStack(spacing:30) {
+                Spacer()
+                    .frame(height: 10)
+                Text("Phase \(phase)/8")
+                    .foregroundStyle(.white)
+                VStack(spacing:20) {
                     VStack {
                         Text("Tap the flag of")
                             .foregroundColor(.white)
@@ -36,9 +42,8 @@ struct ContentView: View {
                         Text(countries[correctAnswer])
                             .foregroundColor(.black)
                             .font(.largeTitle.weight(.semibold))
-                        
+
                     }
-                    
                     ForEach(0..<3) { number in
                         Button {
                             flagTapped(number: number)
@@ -46,12 +51,18 @@ struct ContentView: View {
                             Image(countries[number])
                                 .clipShape(.capsule)
                                 .shadow(radius: 5)
-                        }.alert(scoreTitle, isPresented: $showingScore) {
+                        }.alert("Your score is \(score)", isPresented: $showingScore) {
                             Button("Continue", action: askQuestion)
                         } message: {
-                            Text("Your score is \(score)")
+                            Text(scoreTitle)
+                        }.alert("You've finished\nthe game 😃🎉!", isPresented: $completeGame ) {
+                            Button("Reset", action: reset)
+                        } message: {
+                            Text(scoreTitle)
                         }
                     }
+                   
+                    
                 }
                 .frame(maxWidth: 320)
                 .padding(.vertical, 20)
@@ -67,6 +78,38 @@ struct ContentView: View {
                 }
             .padding()
         }
+    }
+    
+    func flagTapped(number: Int) {
+        if number == correctAnswer {
+            scoreTitle = "Correct"
+            score += 10
+            phase += 1
+            
+            if phase > 8 {
+                showingScore = false
+                completeGame = true
+                return
+            }
+            
+        } else {
+            scoreTitle = "Wrong, thats the flag of \(countries[number])"
+            score = 0
+            phase = 0
+        }
+        showingScore = true
+    }
+    
+    func askQuestion() {
+        countries.shuffle()
+        correctAnswer = Int.random(in: 0...2)
+    }
+    
+    func reset() {
+        countries.shuffle()
+        correctAnswer = Int.random(in: 0...2)
+        phase = 0
+        score = 0
     }
     
     //        ZStack {
@@ -151,21 +194,7 @@ struct ContentView: View {
     //
     //        }
     
-    func flagTapped(number: Int) {
-        if number == correctAnswer {
-            scoreTitle = "Correct"
-            score += 10
-        } else {
-            scoreTitle = "Incorrect"
-            score -= 10
-        }
-        showingScore = true
-    }
-    
-    func askQuestion() {
-        countries.shuffle()
-        correctAnswer = Int.random(in: 0...2)
-    }
+   
     
 }
 
