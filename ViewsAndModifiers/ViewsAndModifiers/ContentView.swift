@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var toogleExample = false
     var body: some View {
         Button("Hello, World!"){
-            print(type(of: self.body))
+            toogleExample.toggle()
         }
         .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100)
-        .background(.red)
+        .foregroundColor(.white)
+        .background(toogleExample ? .blue : .red)
     }
 }
 
