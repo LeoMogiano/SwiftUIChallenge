@@ -41,6 +41,28 @@ extension View {
     }
 }
 
+struct Watermark: ViewModifier {
+    var text:String
+    func body(content: Content) -> some View {
+        ZStack(alignment:.bottomTrailing) {
+            content
+            Text(text)
+                .font(.caption)
+                .foregroundColor(.white)
+                .padding(5)
+                .background(.black)
+        }
+    }
+}
+
+extension View {
+    func watermarked(with text:String) -> some View {
+        modifier(Watermark(text:text))
+    }
+}
+
+
+
 struct ContentView: View {
     //    @State private var toogleExample = false
     //    let mogi1 = Text("Leo Mogiano")
@@ -48,8 +70,12 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            Color.blue
+                .frame(width: 300, height: 100)
+                .watermarked(with: "By LeoMogiano")
             Text("ViewModifier")
                 .titleStyle()
+                //modifier(Title())
             EncapsuleText(text: "Leo")
                 .foregroundStyle(.white)
             EncapsuleText(text: "Mogi")
