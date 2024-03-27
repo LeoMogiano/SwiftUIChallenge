@@ -7,6 +7,30 @@
 
 import SwiftUI
 
+struct FlagImage: View {
+    var img:String
+    
+    var body: some View {
+        Image(img)
+            .clipShape(.capsule)
+            .shadow(radius: 5)
+    }
+}
+
+struct BlueTitle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle.bold())
+            .foregroundStyle(.blue)
+    }
+}
+
+extension View {
+    func blueTitle() -> some View {
+        modifier(BlueTitle())
+    }
+}
+
 struct ContentView: View {
     
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy",
@@ -28,8 +52,9 @@ struct ContentView: View {
             
             VStack {
                 Text("Guess the flag")
-                    .foregroundColor(.white)
-                    .font(.largeTitle.bold())
+                    .blueTitle()
+//                    .foregroundColor(.white)
+//                    .font(.largeTitle.bold())
                 Spacer()
                     .frame(height: 10)
                 Text("Phase \(phase)/8")
@@ -48,9 +73,10 @@ struct ContentView: View {
                         Button {
                             flagTapped(number: number)
                         } label: {
-                            Image(countries[number])
-                                .clipShape(.capsule)
-                                .shadow(radius: 5)
+                            FlagImage(img: countries[number])
+//                            Image(countries[number])
+//                                .clipShape(.capsule)
+//                                .shadow(radius: 5)
                         }.alert("Your score is \(score)", isPresented: $showingScore) {
                             Button("Continue", action: askQuestion)
                         } message: {

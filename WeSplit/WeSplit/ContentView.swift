@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var checkAumount = 0.0 // Apple recommends use State with private
     @State private var numberOfPeople = 0
-    @State private var tipPercentage = 20
+    @State private var tipPercentage = 0
     @FocusState private var amountIsFocused: Bool
     // name binding state allows read and write the value $checkAmount
 //    let tipPercentages = [10, 15, 20, 25, 0]
@@ -55,10 +55,12 @@ struct ContentView: View {
                 }
                 Section("Monto por Persona") {
                     Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                        .foregroundStyle(tipPercentage == 0 ? .red : .black)
                 }
                 Section("Monto total") {
                     Text(totalAmount, format: .currency(code: Locale.current.currency?.identifier ?? "S"))
                 }
+                .foregroundStyle(tipPercentage == 0 ? .red : .black)
                 
             }.navigationTitle("PropinaGenerator")
                 .toolbar {
