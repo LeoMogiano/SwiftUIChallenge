@@ -102,6 +102,7 @@ struct ContentView: View {
             score += 5
             scoreResult = "🤩 You are doing great!"
             youWon = true
+            phase += 1
         } else {
             score -= 5
             scoreResult = "🙁 You lost"
