@@ -7,9 +7,10 @@
 
 import SwiftUI
 
+
 struct FloatingEmoji: ViewModifier {
-    @State private var yOffset: Double = 0
-    
+   
+    @State var yOffset: Double
     func body(content: Content) -> some View {
         content
             .font(.system(size: 60))
@@ -22,9 +23,17 @@ struct FloatingEmoji: ViewModifier {
     }
 }
 
+extension View {
+    func floatingEmoji(yOffset: Double) -> some View {
+        modifier(FloatingEmoji(yOffset: yOffset))
+    }
+}
+
+
 struct ContentView: View {
     
     @State private var selectionRPS = ["🪨", "📄","✂️"].shuffled()
+    @State private var yOffset: Double = 0
 //    let correctsRPS = ["Paper", "Rock", "Scissors"]
     
     @State private var selectionApp = Int.random(in: 0...2)
@@ -56,7 +65,8 @@ struct ContentView: View {
                 Spacer().frame(height: 50)
                 
                 (!showingScore)
-                ? AnyView(Text("💬"))
+                ? AnyView(Text("💬")
+                    .floatingEmoji(yOffset: yOffset))
                     
                 : AnyView(Text(selectionRPS[selectionApp])
                     .font(.system(size: 60))
@@ -124,9 +134,12 @@ struct ContentView: View {
     func nextMatch () {
         selectionRPS = selectionRPS.shuffled()
         selectionApp = Int.random(in: 0...2)
-//        yOffset = 0
+        yOffset = 0
     }
+    
+    
 }
+
 
 
     
