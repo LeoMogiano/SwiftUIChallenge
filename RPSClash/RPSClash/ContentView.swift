@@ -7,6 +7,21 @@
 
 import SwiftUI
 
+struct FloatingEmoji: ViewModifier {
+    @State private var yOffset: Double = 0
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 60))
+            .offset(y: yOffset)
+            .onAppear {
+                withAnimation(Animation.easeInOut(duration: 1).repeatForever()) {
+                    self.yOffset = 15 // Ajusta la amplitud del movimiento aquí
+                }
+            }
+    }
+}
+
 struct ContentView: View {
     
     @State private var selectionRPS = ["🪨", "📄","✂️"].shuffled()
@@ -20,7 +35,7 @@ struct ContentView: View {
     @State private var score = 0
     @State private var phase = 0
     
-    @State private var yOffset: Double = 0
+    
     
     var body: some View {
         ZStack {
@@ -41,14 +56,8 @@ struct ContentView: View {
                 Spacer().frame(height: 50)
                 
                 (!showingScore)
-                ? AnyView(Text("💬")
-                    .font(.system(size: 60))
-                    .offset(y: yOffset)
-                    .onAppear {
-                        withAnimation(Animation.easeInOut(duration: 1).repeatForever()) {
-                            self.yOffset = 15 // Ajusta la amplitud del movimiento aquí
-                        }
-                    })
+                ? AnyView(Text("💬"))
+                    
                 : AnyView(Text(selectionRPS[selectionApp])
                     .font(.system(size: 60))
                 )
@@ -115,7 +124,7 @@ struct ContentView: View {
     func nextMatch () {
         selectionRPS = selectionRPS.shuffled()
         selectionApp = Int.random(in: 0...2)
-        yOffset = 0
+//        yOffset = 0
     }
 }
 
