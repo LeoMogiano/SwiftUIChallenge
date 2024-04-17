@@ -106,6 +106,8 @@ struct ContentView: View {
     }
     
     func startGame() {
+        score = 0
+        usedWords.removeAll()
         // 1.find the URL for start.txt in our app bundle
         guard let startWordsURL = Bundle.main.url(forResource: "start",withExtension: "txt") else{
             //assign the default value
