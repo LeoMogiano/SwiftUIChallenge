@@ -12,10 +12,12 @@ struct ContentView: View {
     @State private var usedWords = [String]()
     @State private var rootWord = ""
     @State private var newWord = ""
+    @State private var score = 0
     
     @State private var errorTitle = ""
     @State private var errorMessage = ""
     @State private var showingError = false
+    @State private var showingAlert = false
     
     var body: some View {
         
@@ -35,6 +37,13 @@ struct ContentView: View {
                         }
                     }
                 }
+                
+                if score > 0 {
+                    Text("Your Score is \(score)")
+                        .padding(.horizontal, 80)
+                }
+                    
+
             }
             .navigationTitle(rootWord)
             .onSubmit(addWord)
@@ -42,6 +51,24 @@ struct ContentView: View {
             .alert(errorTitle, isPresented: $showingError) { } message: {
                 Text(errorMessage)
             }
+            .toolbar{
+               Button("Restart Game", action: startGame)
+            }
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    Button("Restart Game") {
+//                        showingAlert = true
+//                    }
+//                }
+//            }
+//            .alert(isPresented: $showingAlert) {
+//                Alert(title: Text("Restart Game"), message: Text("¿Estás seguro de que quieres reiniciar el juego?"), primaryButton: .destructive(Text("Sí"), action: {
+//                    // Agrega aquí la acción que deseas ejecutar al confirmar el reinicio del juego
+//                    // Por ejemplo: startGame()
+//                }), secondaryButton: .cancel())
+//            }
+           
+ 
         }
         
     }
@@ -49,7 +76,10 @@ struct ContentView: View {
     func addWord() {
         let answer =  newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         
-        guard answer.count > 0 else { return }
+        guard answer.count > 3 else {
+            wordError(title: "Word too short", message: "Do yo really know language?")
+            return
+        }
         
         guard isOriginal(word: answer) else {
             wordError(title: "Word used already", message: "Be more original!")
@@ -68,6 +98,7 @@ struct ContentView: View {
         
         withAnimation {
             usedWords.insert(answer, at: 0)
+            score += answer.count
         }
         
         newWord = ""
@@ -125,6 +156,8 @@ struct ContentView: View {
         errorTitle = title
         errorMessage = message
         showingError = true
+        // restart input
+        newWord = ""
     }
 }
 
