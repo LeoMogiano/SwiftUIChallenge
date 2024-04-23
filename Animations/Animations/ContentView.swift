@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var animationAmount = 0.0
+    @State private var animationAmount = 0.0 // 1.0
     
     var body: some View {
         VStack (alignment:.center) {
