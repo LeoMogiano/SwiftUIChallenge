@@ -10,9 +10,10 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var animationAmount = 0.0 // 1.0
+    @State private var enabled = false;
     
     var body: some View {
-        VStack (alignment:.center) {
+        HStack (alignment:.center) {
 //            Text("Hola")
 //                .padding(50)
 //                .background(.red)
@@ -86,6 +87,18 @@ struct ContentView: View {
             .foregroundStyle(.white)
             .clipShape(.circle)
             .rotation3DEffect(.degrees(animationAmount), axis: (x: 0, y: 1, z: 0))
+            
+            Button("Tap Me") {
+                enabled.toggle()
+            }
+            .frame(width: 200, height: 200)
+            .background(enabled ? .blue : .red)
+            .animation(nil, value: enabled)
+            .foregroundStyle(.white)
+            .clipShape(.rect(cornerRadius: enabled ? 60 : 0))
+            .animation(.spring(duration: 1, bounce: 0.6), value: enabled)
+            
+            
         }
     }
 }
