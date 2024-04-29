@@ -43,10 +43,18 @@ struct ContentView: View {
                             .frame(maxWidth: .infinity)
                     }
                     
-                }.navigationTitle("MultiplyGame")
+                }
+                .navigationTitle("MultiplyGame")
+                .alert("Important Message", isPresented: $showingMessage) {
+                    Button("OK") { }
+                } message: {
+                    Text(messageAlert)
+                }
             } else {
                 
                 Form {
+                    
+                    Text("Level \(level)/\(numberQuestions)")
                     
                     Section(header: Text("Answer the question")) {
                         Text("\(numberTable) X \(randomNum)")
@@ -59,7 +67,7 @@ struct ContentView: View {
                     }
                     
                     Button(action: validateAnswer) {
-                        Text("Start Game")
+                        Text("Enter")
                             .frame(maxWidth: .infinity)
                     }
                     
@@ -67,7 +75,6 @@ struct ContentView: View {
                     
                 }
                 .navigationTitle("MultiplyGame")
-                
                 .alert("Important Message", isPresented: $showingMessage) {
                     Button("OK") { }
                 } message: {
@@ -82,10 +89,14 @@ struct ContentView: View {
     func validateAnswer() {
         let realAnswer = randomNum * numberTable
         let myAnswer = Int(answer) ?? 0
+        print(level)
+        print(numberQuestions)
+
         
         if (realAnswer == myAnswer) {
             showingMessage = true
             messageAlert = "That's correct"
+            answer = ""
             randomNum = Int.random(in: 1...10)
             level += 1
         } else {
@@ -93,6 +104,13 @@ struct ContentView: View {
             messageAlert = "I'm sorry that's wrong"
             randomNum = Int.random(in: 1...10)
             level = 0
+        }
+        
+        if( level == numberQuestions) {
+            showingMessage = true
+            messageAlert = "Congratulations, you completed the game"
+            isGameStarted = false
+            return
         }
         
         
