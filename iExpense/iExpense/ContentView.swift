@@ -7,31 +7,74 @@
 
 import SwiftUI
 
-struct SecondView: View {
-    var body: some View {
-        Text("Hello")
-    }
-}
+//struct SecondView: View {
+//    
+//    @Environment(\.dismiss) var dismiss
+//    
+//    let name:String
+//    var body: some View {
+//        Text("Hello World \(name)!")
+//        Button("Dismiss Screen") {
+//            dismiss()
+//        }
+//    }
+//}
 
 struct ContentView: View {
-    @Observable
-    class User {
-        var firstName = "Leo"
-        var lastName = "Mogiano"
-    }
+//    @Observable
+//    class User {
+//        var firstName = "Leo"
+//        var lastName = "Mogiano"
+//    }
+//    
+//    @State private var showingSheet = false
+//    @State private var mogiUser = User()
     
-    @State private var mogiUser = User()
+    @State private var listInt = [Int]()
+    @State private var currentNumber = 1
     
     var body: some View {
-        VStack {
-            Text("\(mogiUser.firstName)")
-            Text("\(mogiUser.lastName)")
-            
-            TextField("Input de Nombre", text: $mogiUser.firstName)
-            TextField("Input de Nombre", text: $mogiUser.lastName)
+//        VStack {
+//            Text("\(mogiUser.firstName)")
+//            Text("\(mogiUser.lastName)")
+//            
+//            TextField("Input de Nombre", text: $mogiUser.firstName)
+//            TextField("Input de Nombre", text: $mogiUser.lastName)
+//            
+//            Button("Second View") {
+//                showingSheet.toggle()
+//            }
+//        }
+//        .padding()
+//        .sheet(isPresented: $showingSheet) {
+//            SecondView(name: "Leo")
+//        }
+        NavigationStack {
+            VStack {
+                List {
+                    ForEach(listInt, id: \.self) {
+                        Text("Row \($0)")
+                    }
+                    .onDelete(perform: removeRows)
+                }
+                
+                Button("Add Number") {
+                    listInt.append(currentNumber)
+                    currentNumber += 1
+                }
+            }
+            .toolbar {
+                EditButton()
+            }
         }
-        .padding()
+        
+        
     }
+    
+    func removeRows (at offsets: IndexSet) {
+        listInt.remove(atOffsets: offsets)
+    }
+    
 }
 
 #Preview {
