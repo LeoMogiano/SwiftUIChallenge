@@ -7,72 +7,127 @@
 
 import SwiftUI
 
-//struct SecondView: View {
-//    
-//    @Environment(\.dismiss) var dismiss
-//    
-//    let name:String
-//    var body: some View {
-//        Text("Hello World \(name)!")
-//        Button("Dismiss Screen") {
-//            dismiss()
-//        }
-//    }
-//}
+struct AmountStyle: ViewModifier {
+    var color: Color
+    
+    func body(content: Content) -> some View {
+        content
+            .bold()
+            .foregroundStyle(color)
+    }
+}
+
+extension View {
+    func amountStyle(amount: Double) -> some View {
+        let color: Color
+        if amount < 25 {
+            color = .green
+        } else if amount <= 70 {
+            color = .blue
+        } else {
+            color = .red
+        }
+        return modifier(AmountStyle(color: color))
+    }
+}
+
+
+
+struct ExpenseItem: Identifiable, Codable {
+    var id = UUID()
+    let name: String
+    let type: String
+    let amount: Double
+}
+
+@Observable
+class Expenses {
+    var items = [ExpenseItem]() {
+        didSet {
+            if let encoded = try? JSONEncoder().encode(items) {
+                UserDefaults.standard.set(encoded,forKey: "Items")
+            }
+        }
+    }
+    init() {
+        if let savedItems = UserDefaults.standard.data(forKey: "Items") {
+            if let decodedItems = try? JSONDecoder().decode([ExpenseItem].self, from: savedItems) {
+                items = decodedItems
+                return
+            }
+        }
+    }
+    
+}
+
+
 
 struct ContentView: View {
-//    @Observable
-//    class User {
-//        var firstName = "Leo"
-//        var lastName = "Mogiano"
-//    }
-//    
-//    @State private var showingSheet = false
-//    @State private var mogiUser = User()
     
-    @State private var listInt = [Int]()
-    @State private var currentNumber = 1
+    @State private var expenses = Expenses()
+    @State private var showingAddExpense = false
+    
     
     var body: some View {
-//        VStack {
-//            Text("\(mogiUser.firstName)")
-//            Text("\(mogiUser.lastName)")
-//            
-//            TextField("Input de Nombre", text: $mogiUser.firstName)
-//            TextField("Input de Nombre", text: $mogiUser.lastName)
-//            
-//            Button("Second View") {
-//                showingSheet.toggle()
-//            }
-//        }
-//        .padding()
-//        .sheet(isPresented: $showingSheet) {
-//            SecondView(name: "Leo")
-//        }
+        
         NavigationStack {
+            
             VStack {
-                List {
-                    ForEach(listInt, id: \.self) {
-                        Text("Row \($0)")
-                    }
-                    .onDelete(perform: removeRows)
+                Divider()
+                Section(header: Text("Personal").font(.headline)) {
+                    ExpenseList(expenses: expenses, type: "Personal")
+                }
+                Section(header: Text("Business").font(.headline)) {
+                    ExpenseList(expenses: expenses, type: "Business")
                 }
                 
-                Button("Add Number") {
-                    listInt.append(currentNumber)
-                    currentNumber += 1
+            }
+            .navigationTitle("iExpense")
+            .toolbar {
+                Button("Add Expense", systemImage: "plus") {
+                    showingAddExpense.toggle()
                 }
             }
-            .toolbar {
-                EditButton()
+            .sheet(isPresented: $showingAddExpense) {
+                AddView(expenses: expenses)
             }
         }
         
         
     }
     
-    func removeRows (at offsets: IndexSet) {
-        listInt.remove(atOffsets: offsets)
+    
+    
+    struct ExpenseList: View {
+        var expenses: Expenses
+        let type: String
+        
+        var body: some View {
+            if expenses.items.filter({ $0.type == type }).isEmpty {
+                Text("No expenses found")
+                    .foregroundColor(.gray)
+            } else {
+                List {
+                    ForEach(expenses.items.filter { $0.type == type }) { item in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(item.name)
+                                    .font(.headline)
+                                Text(item.type)
+                                    .font(.subheadline)
+                            }
+                            Spacer()
+                            Text(item.amount, format: .currency(code: "BOB"))
+                                .amountStyle(amount: item.amount)
+                        }
+                    }
+                    .onDelete(perform: removeItems)
+                }
+            }
+        }
+        private func removeItems (at offsets: IndexSet) {
+            expenses.items.remove(atOffsets: offsets)
+        }
     }
     
 }
