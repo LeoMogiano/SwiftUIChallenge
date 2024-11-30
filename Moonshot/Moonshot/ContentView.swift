@@ -7,46 +7,58 @@
 
 import SwiftUI
 
-//struct CustomText:View {
-//    var text: String
-//
-//    var body: some View {
-//        Text(text)
-//    }
-//
-//    init(text: String) {
-//        print("New Text")
-//        self.text = text
-//    }
-//}
-
 struct ContentView: View {
+    
+    let astronauts: [String: Astronaut]
+    var missions: [Mission]
+    
+    
+    
+    let columns = [
+        GridItem(.adaptive(minimum: 150))
+    ]
+    
+    init() {
+        do {
+            self.missions = try Bundle.main.decode("missions.json")
+            self.astronauts = try Bundle.main.decode("astronauts.json")
+       
+        } catch {
+
+            self.missions = []
+            self.astronauts = [:]
+            print("Error al cargar las misiones: \(error.localizedDescription)")
+        }
+
+    }
+    
     var body: some View {
         NavigationStack {
-            List(0..<100) { row in
-                NavigationLink("Row \(row)") {
-                    
-                    Text("Detail \(row)")
-                    
+            
+            ScrollView {
+                LazyVGrid( columns: columns) {
+                    ForEach(missions) { mission in
+                        
+                        VStack {
+                            Image(mission.image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100)
+                            VStack{
+                                Text(mission.displayName)
+                                    .font(.headline)
+                                
+                                Text(mission.formattedLaunchDate)
+                                    .font(.subheadline)
+                                    
+                            }
+                        }
+                        
+                        
+                    }
                 }
-            }
-            .navigationTitle("SwiftUI")
+            }.navigationTitle("MoonShot")
         }
-        //        ScrollView {
-        //            LazyVStack {
-        //                ForEach(0..<100) {
-        //                    CustomText(text: "Item \($0)")
-        //                        .font(.title)
-        //                }
-        //            }
-        //            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-        //        }
-        //        Image("Example")
-        //            .resizable()
-        //            .scaledToFit()
-        //            .containerRelativeFrame(.horizontal) { size, axis in
-        //                size * 0.5
-        //            }
     }
 }
 

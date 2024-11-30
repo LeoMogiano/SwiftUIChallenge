@@ -7,18 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B8840CAC2CF9417F00FF938D /* Astronaut.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8840CAB2CF9417F00FF938D /* Astronaut.swift */; };
+		B8840CAE2CF941C200FF938D /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8840CAD2CF941C200FF938D /* Mission.swift */; };
 		B8CEAC112C2D0AB4008EA67A /* MoonshotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CEAC102C2D0AB4008EA67A /* MoonshotApp.swift */; };
 		B8CEAC132C2D0AB4008EA67A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CEAC122C2D0AB4008EA67A /* ContentView.swift */; };
 		B8CEAC152C2D0AB5008EA67A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8CEAC142C2D0AB5008EA67A /* Assets.xcassets */; };
 		B8CEAC182C2D0AB5008EA67A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8CEAC172C2D0AB5008EA67A /* Preview Assets.xcassets */; };
+		B8D41DBF2CF8FBD800255B79 /* astronauts.json in Resources */ = {isa = PBXBuildFile; fileRef = B8D41DBD2CF8FBD800255B79 /* astronauts.json */; };
+		B8D41DC02CF8FBD800255B79 /* missions.json in Resources */ = {isa = PBXBuildFile; fileRef = B8D41DBE2CF8FBD800255B79 /* missions.json */; };
+		B8D41DC22CF8FC2A00255B79 /* Bundle-Decodeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D41DC12CF8FC2A00255B79 /* Bundle-Decodeable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B8840CAB2CF9417F00FF938D /* Astronaut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astronaut.swift; sourceTree = "<group>"; };
+		B8840CAD2CF941C200FF938D /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
 		B8CEAC0D2C2D0AB4008EA67A /* Moonshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moonshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8CEAC102C2D0AB4008EA67A /* MoonshotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonshotApp.swift; sourceTree = "<group>"; };
 		B8CEAC122C2D0AB4008EA67A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B8CEAC142C2D0AB5008EA67A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8CEAC172C2D0AB5008EA67A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B8D41DBD2CF8FBD800255B79 /* astronauts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = astronauts.json; sourceTree = "<group>"; };
+		B8D41DBE2CF8FBD800255B79 /* missions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = missions.json; sourceTree = "<group>"; };
+		B8D41DC12CF8FC2A00255B79 /* Bundle-Decodeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodeable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +63,13 @@
 			children = (
 				B8CEAC102C2D0AB4008EA67A /* MoonshotApp.swift */,
 				B8CEAC122C2D0AB4008EA67A /* ContentView.swift */,
+				B8840CAB2CF9417F00FF938D /* Astronaut.swift */,
+				B8840CAD2CF941C200FF938D /* Mission.swift */,
 				B8CEAC142C2D0AB5008EA67A /* Assets.xcassets */,
+				B8D41DC12CF8FC2A00255B79 /* Bundle-Decodeable.swift */,
 				B8CEAC162C2D0AB5008EA67A /* Preview Content */,
+				B8D41DBD2CF8FBD800255B79 /* astronauts.json */,
+				B8D41DBE2CF8FBD800255B79 /* missions.json */,
 			);
 			path = Moonshot;
 			sourceTree = "<group>";
@@ -125,6 +140,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8D41DBF2CF8FBD800255B79 /* astronauts.json in Resources */,
+				B8D41DC02CF8FBD800255B79 /* missions.json in Resources */,
 				B8CEAC182C2D0AB5008EA67A /* Preview Assets.xcassets in Resources */,
 				B8CEAC152C2D0AB5008EA67A /* Assets.xcassets in Resources */,
 			);
@@ -137,8 +154,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8D41DC22CF8FC2A00255B79 /* Bundle-Decodeable.swift in Sources */,
 				B8CEAC132C2D0AB4008EA67A /* ContentView.swift in Sources */,
 				B8CEAC112C2D0AB4008EA67A /* MoonshotApp.swift in Sources */,
+				B8840CAE2CF941C200FF938D /* Mission.swift in Sources */,
+				B8840CAC2CF9417F00FF938D /* Astronaut.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +308,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mogiteam.Moonshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -317,7 +337,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mogiteam.Moonshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
