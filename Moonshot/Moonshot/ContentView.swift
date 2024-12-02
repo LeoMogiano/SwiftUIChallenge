@@ -34,30 +34,42 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            
             ScrollView {
                 LazyVGrid( columns: columns) {
                     ForEach(missions) { mission in
                         
-                        VStack {
-                            Image(mission.image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 100)
-                            VStack{
-                                Text(mission.displayName)
-                                    .font(.headline)
-                                
-                                Text(mission.formattedLaunchDate)
-                                    .font(.subheadline)
+                        NavigationLink(destination:MissionView(mission, astronauts)){
+                            VStack {
+                                Image(mission.image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 100, height: 100)
+                                    .padding(.vertical, 15)
+                                VStack{
+                                    Text(mission.displayName)
+                                        .font(.headline)
+                                        .foregroundStyle(.white)
                                     
+                                    Text(mission.formattedLaunchDate)
+                                        .font(.subheadline)
+                                        .foregroundStyle(.white.opacity(0.4))
+                                }.padding(.vertical, 5)
+                                    .frame(maxWidth: .infinity)
+                                    .background(.lightBackground)
+                                
                             }
+                            .clipShape(.rect(cornerRadius: 10))
+                            .overlay{
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(.lightBackground)
+                            }.padding(.vertical, 4)
                         }
                         
-                        
                     }
-                }
+                }.padding([.horizontal, .bottom])
             }.navigationTitle("MoonShot")
+                .background(.darkBackground)
+                .preferredColorScheme(.dark)
         }
     }
 }
