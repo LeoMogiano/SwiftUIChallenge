@@ -33,7 +33,7 @@ A simple game that challenges users to guess the flag of a country from a list o
 ## Screenshots
 
 | **Home** |
-|:-----------------------:|:-----------------------:|
+|:-----------------------:|
 | <img src="./Screenshots/s2.png" width="200"> |
 
 ## 3. iExpense

@@ -34,7 +34,7 @@ Un jeu simple qui défie les utilisateurs de deviner le drapeau d'un pays à par
 ## Captures d'écran
 
 | **Accueil** |
-|:-----------------------:|:-----------------------:|
+|:-----------------------:|
 | <img src="./Screenshots/s2.png" width="200"> |
 
 ## 3. iExpense
