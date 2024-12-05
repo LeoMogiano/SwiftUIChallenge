@@ -70,7 +70,7 @@ El diseño es una simple aplicación de fragancias que permite a los usuarios ve
 ## Capturas de Pantalla
 
 | **Pantalla Inicial** | **Pantalla de Juego** |
-|:-----------------------:|
+|:-----------------------:| :-----------------------:|
 | <img src="./Screenshots/s7.png" width="200"> | <img src="./Screenshots/s8.png" width="200"> |
 
 ## 7. Moonshot

@@ -73,7 +73,7 @@ The design is a simple fragrance app that allows users to view fragrances, view 
 ## Screenshots
 
 | ** Initial Screen ** | ** Game Screen ** |
-|:-----------------------:|
+|:-----------------------:| :-----------------------:|
 | <img src="./Screenshots/s7.png" width="200"> | <img src="./Screenshots/s8.png" width="200"> |
 
 ## 7. Moonshot

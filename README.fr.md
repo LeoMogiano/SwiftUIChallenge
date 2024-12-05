@@ -70,7 +70,7 @@ Le design est une application simple de parfums qui permet aux utilisateurs de v
 ## Captures d'écran
 
 | **Écran initial** | **Écran de jeu** |
-|:-----------------------:|
+|:-----------------------:| :-----------------------:|
 | <img src="./Screenshots/s7.png" width="200"> | <img src="./Screenshots/s8.png" width="200"> |
 
 ## 7. Moonshot
