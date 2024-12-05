@@ -44,7 +44,7 @@ This app allows users to track their expenses and categorize them as personal or
 
 | ** Home ** | ** Add Expense ** |
 |:-----------------------:|:-----------------------:|
-| <img src="./Screenshots/s3.png" width="200"> | <img src="./screenshots/s4.png" width="200"> | 
+| <img src="./Screenshots/s3.png" width="200"> | <img src="./Screenshots/s4.png" width="200"> | 
 
 ## 4. WordScramble
 

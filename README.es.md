@@ -44,7 +44,7 @@ Esta aplicación permite a los usuarios realizar un seguimiento de sus gastos y 
 
 | **Inicio** | **Agregar Gasto** |
 |:-----------------------:|:-----------------------:|
-| <img src="./Screenshots/s3.png" width="200"> | <img src="./screenshots/s4.png" width="200"> | 
+| <img src="./Screenshots/s3.png" width="200"> | <img src="./Screenshots/s4.png" width="200"> | 
 
 ## 4. WordScramble
 Esta aplicación es un simple juego de palabras que reta a los usuarios a crear palabras a partir de una palabra dada.

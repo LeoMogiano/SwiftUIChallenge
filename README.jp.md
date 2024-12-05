@@ -44,7 +44,7 @@
 
 | **ホーム** | **費用追加** |
 |:-----------------------:|:-----------------------:|
-| <img src="./Screenshots/s3.png" width="200"> | <img src="./screenshots/s4.png" width="200"> | 
+| <img src="./Screenshots/s3.png" width="200"> | <img src="./Screenshots/s4.png" width="200"> | 
 
 ## 4. WordScramble
 このアプリは、ユーザーが与えられた単語から新しい単語を作成するシンプルな単語ゲームです。

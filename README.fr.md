@@ -44,7 +44,7 @@ Cette application permet aux utilisateurs de suivre leurs dépenses et de les cl
 
 | **Accueil** | **Ajouter une dépense** |
 |:-----------------------:|:-----------------------:|
-| <img src="./Screenshots/s3.png" width="200"> | <img src="./screenshots/s4.png" width="200"> | 
+| <img src="./Screenshots/s3.png" width="200"> | <img src="./Screenshots/s4.png" width="200"> | 
 
 ## 4. WordScramble
 Cette application est un simple jeu de mots qui défie les utilisateurs de créer des mots à partir d'un mot donné.
