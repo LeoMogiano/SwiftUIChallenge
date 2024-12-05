@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+ 
 struct MissionView: View {
     let mission: Mission
     let crew: [CrewMember]
