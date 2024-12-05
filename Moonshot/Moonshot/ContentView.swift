@@ -12,8 +12,6 @@ struct ContentView: View {
     let astronauts: [String: Astronaut]
     var missions: [Mission]
     
-    
-    
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]

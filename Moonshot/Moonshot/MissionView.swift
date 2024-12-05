@@ -20,12 +20,12 @@ struct MissionView: View {
         self.mission = mission
         
         self.crew = mission.crew.map { member in
-                if let astronaut = astronauts[member.name] {
-                    return CrewMember(role: member.role, astronaut: astronaut)
-                } else {
-                    fatalError("Missing \(member.name)")
-                }
+            if let astronaut = astronauts[member.name] {
+                return CrewMember(role: member.role, astronaut: astronaut)
+            } else {
+                fatalError("Missing \(member.name)")
             }
+        }
     }
     
     var body: some View {
@@ -45,16 +45,15 @@ struct MissionView: View {
                             .padding(.bottom, 5)
                         
                         Text(mission.description)
-                            
+                        
                     }.padding(.horizontal)
                 }.padding(.bottom)
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(crew, id: \.role) { crewMember in
-                            NavigationLink {
-                                Text("Astronaut details")
-                            } label: {
+                            NavigationLink(destination:AstronautView(crewMember.astronaut)) {
+                                
                                 HStack {
                                     Image(crewMember.astronaut.id)
                                         .resizable()
@@ -64,7 +63,7 @@ struct MissionView: View {
                                             Capsule()
                                                 .strokeBorder(.white, lineWidth: 1)
                                         )
-
+                                    
                                     VStack(alignment: .leading) {
                                         Text(crewMember.astronaut.name)
                                             .foregroundStyle(.white)
@@ -75,6 +74,7 @@ struct MissionView: View {
                                 }
                                 .padding(.horizontal)
                             }
+                                           
                         }
                     }
                 }
