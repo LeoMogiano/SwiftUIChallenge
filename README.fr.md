@@ -79,5 +79,5 @@ L'application est un simple annuaire d'astronautes qui permet aux utilisateurs d
 ## Captures d'écran
 
 | **Écran d'accueil** | **Détails de la mission** | **Détails de l'astronaute** |
-|:-----------------------:|
+|:-----------------------:| :-----------------------:| :-----------------------:|
 | <img src="./Screenshots/s9.png" width="200"> | <img src="./Screenshots/s10.png" width="200"> | <img src="./Screenshots/s11.png" width="200"> |
