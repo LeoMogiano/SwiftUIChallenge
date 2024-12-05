@@ -96,8 +96,6 @@ struct ContentView: View {
         
     }
     
-    
-    
     struct ExpenseList: View {
         var expenses: Expenses
         let type: String

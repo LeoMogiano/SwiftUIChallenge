@@ -21,7 +21,7 @@ struct BlueTitle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.largeTitle.bold())
-            .foregroundStyle(.blue)
+            .foregroundStyle(.white.opacity(0.7))
     }
 }
 
