@@ -34,7 +34,7 @@ Un juego simple que reta a los usuarios a adivinar la bandera de un país a part
 ## Capturas de Pantalla
 
 | **Inicio** |
-|:-----------------------:|:-----------------------:|
+|:-----------------------:|
 | <img src="./Screenshots/s2.png" width="200"> |
 
 ## 3. iExpense
