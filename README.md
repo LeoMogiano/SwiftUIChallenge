@@ -83,5 +83,5 @@ The app is a simple astronaut directory that allows users to view astronauts and
 ## Screenshots
 
 | **Home Screen** | **Mission Details** | **Astronaut Details** | ** ListView ** |
-|:-----------------------:| :-----------------------:| :-----------------------:|
+|:-----------------------:| :-----------------------:| :-----------------------:| :-----------------------:|
 | <img src="./Screenshots/s9.png" width="200"> | <img src="./Screenshots/s10.png" width="200"> | <img src="./Screenshots/s11.png" width="200"> | <img src="./Screenshots/s12.png" width="200"> |
