@@ -78,6 +78,6 @@ La aplicación es un simple directorio de astronautas que permite a los usuarios
 
 ## Capturas de Pantalla
 
-| **Pantalla de Inicio** | **Detalles de la Misión** | **Detalles del Astronauta** |
-|:-----------------------:| :-----------------------:| :-----------------------:|
-| <img src="./Screenshots/s9.png" width="200"> | <img src="./Screenshots/s10.png" width="200"> | <img src="./Screenshots/s11.png" width="200"> |
+| **Pantalla de inicio** | **Detalles de la misión** | **Detalles del astronauta** | **Vista de lista** |
+|:-----------------------:| :-----------------------:| :-----------------------:| :-----------------------:|
+| <img src="./Screenshots/s9.png" width="200"> | <img src="./Screenshots/s10.png" width="200"> | <img src="./Screenshots/s11.png" width="200"> | <img src="./Screenshots/s12.png" width="200"> |
