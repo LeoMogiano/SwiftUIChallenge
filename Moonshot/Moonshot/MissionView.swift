@@ -29,7 +29,7 @@ struct MissionView: View {
     }
     
     var body: some View {
-        NavigationStack {
+        
             ScrollView{
                 VStack{
                     Image(mission.image)
@@ -55,7 +55,7 @@ struct MissionView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(crew, id: \.role) { crewMember in
-                            NavigationLink(destination:AstronautView(crewMember.astronaut)) {
+                            NavigationLink(value: crewMember.astronaut) {
                                 
                                 HStack {
                                     Image(crewMember.astronaut.id)
@@ -85,7 +85,7 @@ struct MissionView: View {
             }.navigationTitle(mission.displayName)
                 .navigationBarTitleDisplayMode(.inline)
                 .background(.darkBackground)
-        }
+        
     }
 }
 

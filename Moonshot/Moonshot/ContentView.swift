@@ -13,6 +13,7 @@ struct ContentView: View {
     var missions: [Mission]
     
     @State private var isShowingList = false
+    @State private var path = NavigationPath()
     
     init() {
         do {
@@ -25,19 +26,27 @@ struct ContentView: View {
             self.astronauts = [:]
             print("Error al cargar las misiones: \(error.localizedDescription)")
         }
-
+        
     }
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             Group {
                 if !isShowingList {
                     GridView(missions, astronauts)
+                        
                 } else {
                     ListView(missions, astronauts)
                 }
                 
             }.navigationTitle("MoonShot")
+                .navigationDestination(for: Mission.self) { mission in
+                    MissionView(mission, astronauts) // your destination view
+                }
+                .navigationDestination(for: Astronaut.self) { astronaut in
+                    AstronautView(astronaut)
+                }
+                
                 .background(.darkBackground)
                 .preferredColorScheme(.dark)
                 .toolbar{
@@ -45,6 +54,7 @@ struct ContentView: View {
                         isShowingList.toggle()
                     }
                 }
+               
         }
     }
 }
@@ -74,7 +84,7 @@ struct GridView: View {
             LazyVGrid( columns: columns) {
                 ForEach(missions) { mission in
                     
-                    NavigationLink(destination:MissionView(mission, astronauts)){
+                    NavigationLink(value:mission){
                         VStack {
                             Image(mission.image)
                                 .resizable()
@@ -103,6 +113,7 @@ struct GridView: View {
                     
                 }
             }.padding([.horizontal, .bottom])
+                
         }
         
     }
@@ -124,7 +135,7 @@ struct ListView: View {
         
         List {
             ForEach(missions) { mission in
-                NavigationLink(destination: MissionView(mission, astronauts)) {
+                NavigationLink(value:mission){
                    Image(mission.image)
                         .resizable()
                         .scaledToFit()
