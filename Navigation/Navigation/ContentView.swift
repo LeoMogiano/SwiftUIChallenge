@@ -45,16 +45,29 @@ class PathStore {
 
 struct DetailView: View {
     var number: Int
+    @State private var editableTitle: String = "SwiftUI"
 
     var body: some View {
+        Text("Detail View \(number)")
         NavigationLink("Go to Random Number", value: Int.random(in: 1...1000))
-            .navigationTitle("Number: \(number)")
+            .navigationTitle($editableTitle)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(.blue)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Tap Me") {
+                        // button action here
+                    }
+                }
+
+    
+            }
     }
 }
 
 struct ContentView: View {
     @State private var pathStore = PathStore()
-
+    
     var body: some View {
         NavigationStack(path: $pathStore.path) {
             DetailView(number: 0)
