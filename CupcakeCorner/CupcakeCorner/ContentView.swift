@@ -7,74 +7,42 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
-    @State private var results = [Result]()
-    @State private var name = ""
-    @State private var email = ""
-    
+    @State private var order = Order()
     
     var body: some View {
-//        List(results, id: \.trackId) { item in
-//            VStack(alignment: .leading) {
-//                Text(item.trackName)
-//                    .font(.headline)
-//                Text(item.collectionName)
-//            }
-//        }.task {await loadData()}
         
-        VStack {
-            ImageView(
-                url: URL(string: "https://hws.dev/img/logo.png")!,
-                errorMessage: "Failed to load image.",
-                loadingView: AnyView(ProgressView()),
-                frameWidth: 250,
-                frameHeight: 250,
-                contentMode: .fit
-            )
-            
+        NavigationStack {
             Form {
-                Section("Data") {
-                    TextField("Name", text: $name)
-                    TextField("Email", text: $email)
-                }
-                Section("Submit") {
-                    Button("Submit") {
-                        print("Name: \(name), Email: \(email)")
+                Section {
+                    Picker("Select your cake type", selection: $order.type){
+                        ForEach(Order.types.indices, id: \.self) {
+                            Text(Order.types[$0])
+                        }
                     }
-                }.disabled(validateData())
-            }
-        }
-
-
-    }
-    
-    // validate data is
-    
-    func validateData() -> Bool {
-        return (name.count < 6) || !email.contains("@")
-    }
-    
-    func loadData() async {
-        
-        let URLString = "https://itunes.apple.com/search?term=taylor+swift&entity=song"
-        
-        guard let url = URL(string: URLString) else {
-            print("Invalid URL")
-            return
-        }
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            results = try JSONDecoder().decode(Response.self, from: data).results
-        } catch {
-            print("Invalid data")
+                    Stepper("Number of Cakers \(order.quantity)", value: $order.quantity, in: 3...20)
+                    
+                }
+                
+                Section {
+                    Toggle("Any special requests?", isOn: $order.speciaRequest.animation())
+                    
+                    if order.speciaRequest {
+                        Toggle("Add extra frosting", isOn: $order.extraFrosting)
+                        Toggle("Add extra sprinkles", isOn: $order.addSprinkles)
+                    }
+                }
+                
+                Section{
+                    NavigationLink("Delivery details", destination: AddressView(order: order))
+                }
+                
+            }.navigationTitle("Cupcake Corner")
         }
         
     }
 }
-
-
-
 
 
 #Preview {
