@@ -41,7 +41,7 @@ struct ImageView: View {
                 AnyView(loadingView)
             }
         }
-        .frame(width: frameWidth, height: frameHeight)
+        .frame(maxWidth: frameWidth, maxHeight: frameHeight)
     }
 }
 
