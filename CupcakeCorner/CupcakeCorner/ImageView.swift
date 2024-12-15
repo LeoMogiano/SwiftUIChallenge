@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ImageView: View {
-    let url: URL
+    let url: String
     let errorMessage: String
     let loadingView: AnyView
     let frameWidth: CGFloat
@@ -16,7 +16,7 @@ struct ImageView: View {
     let contentMode: ContentMode
     
     init(
-        url: URL, errorMessage: String = "There was an error loading the image.",
+        url: String, errorMessage: String = "There was an error loading the image.",
         loadingView: AnyView = AnyView(ProgressView()),
         frameWidth: CGFloat = 200, frameHeight: CGFloat = 200,
         contentMode: ContentMode = .fit
@@ -30,7 +30,7 @@ struct ImageView: View {
     }
 
     var body: some View {
-        AsyncImage(url: url) { phase in
+        AsyncImage(url: URL(string: url)) { phase in
             if let image = phase.image {
                 image
                     .resizable()
