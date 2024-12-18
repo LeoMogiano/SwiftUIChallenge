@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct CupcakeCornerApp: App {
+    @State private var navigator = NavigatorManager()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(navigator: navigator)
+                .environment(navigator)
         }
     }
 }

@@ -19,7 +19,7 @@ struct AddressView: View {
                 TextField("Zip Code", text: $order.zipCode)
             }
             Section {
-                NavigationLink("Check Out", destination: CheckoutView(order: order))
+                NavigationLink("Check Out", value: order)
             }.disabled(order.hasValidAddress == false)
         }
     }

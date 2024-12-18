@@ -9,11 +9,13 @@ import SwiftUI
 
 
 struct ContentView: View {
+    
+    @Bindable var navigator: NavigatorManager
     @State private var order = Order()
     
     var body: some View {
         
-        NavigationStack {
+        NavigationStack(path: $navigator.path){
             Form {
                 Section {
                     Picker("Select your cake type", selection: $order.type){
@@ -35,10 +37,19 @@ struct ContentView: View {
                 }
                 
                 Section{
-                    NavigationLink("Delivery details", destination: AddressView(order: order))
+                    NavigationLink("Delivery details", value: NavigationWrapper(value: order, identifier: "address"))
                 }
                 
-            }.navigationTitle("Cupcake Corner")
+            }.navigationDestination(for: NavigationWrapper<Order>.self) { wrapper in
+                if wrapper.identifier == "address" {
+                    AddressView(order: wrapper.value)
+                } else if wrapper.identifier == "checkout" {
+                    CheckoutView(order: wrapper.value)
+                } else {
+                    EmptyView()
+                }
+            }
+            
         }
         
     }
@@ -46,5 +57,7 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView()
+    @Previewable @State var navigator = NavigatorManager()
+    ContentView(navigator: navigator)
+        
 }

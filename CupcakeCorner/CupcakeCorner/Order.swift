@@ -9,7 +9,8 @@ import Foundation
 
 
 @Observable
-class Order {
+class Order: Codable, Hashable {
+    var id: UUID = UUID()
     static let types = ["Vanilla", "Chocolate", "Strawberry", "Blueberry"]
     
     var type = 0
@@ -55,5 +56,27 @@ class Order {
         return cost
         
     }
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case _type = "type"
+        case _quantity = "quantity"
+        case _speciaRequest = "specialRequestEnabled"
+        case _extraFrosting = "extraFrosting"
+        case _addSprinkles = "addSprinkles"
+        case _name = "name"
+        case _city = "city"
+        case _streetAddress = "streetAddress"
+        case _zipCode = "zip"
+    }
+    
+    // MARK: - Hashable
+        static func == (lhs: Order, rhs: Order) -> Bool {
+            return lhs.id == rhs.id
+        }
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(id)
+        }
     
 }
