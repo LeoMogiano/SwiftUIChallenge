@@ -12,6 +12,7 @@ struct CheckoutView: View {
     var order: Order
     @State private var confirmationMessage = ""
     @State private var showingConfirmation = false
+    //dissmiss
     @Environment(NavigatorManager.self) private var navigator
     
     var body: some View {
@@ -51,7 +52,9 @@ struct CheckoutView: View {
             .scrollBounceBehavior(.basedOnSize)
             .alert("Thank you!", isPresented: $showingConfirmation) {
                 Button("OK") {
-                    navigator.path.removeLast(navigator.path.count)
+                    
+//                    navigator.path.removeLast(navigator.path.count - 1)
+//                    navigator.path.removeLast(navigator.path.count - 1)
                 }
             } message: {
                 Text(confirmationMessage)

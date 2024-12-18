@@ -12,7 +12,7 @@ struct CupcakeCornerApp: App {
     @State private var navigator = NavigatorManager()
     var body: some Scene {
         WindowGroup {
-            ContentView(navigator: navigator)
+            ContentView(navigation: $navigator)
                 .environment(navigator)
         }
     }
