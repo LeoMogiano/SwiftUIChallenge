@@ -10,10 +10,15 @@ import SwiftUI
 struct CheckoutView: View {
     
     var order: Order
-    @State private var confirmationMessage = ""
-    @State private var showingConfirmation = false
-    //dissmiss
     @Environment(NavigatorManager.self) private var navigator
+    
+    @State private var isLoading = false
+    
+    @State private var titleMessage: String = ""
+    @State private var showingAlert = false
+    @State private var descriptionMessage: String = ""
+    
+    
     
     var body: some View {
         ScrollView{
@@ -33,7 +38,7 @@ struct CheckoutView: View {
                     }
                 } label: {
                     HStack {
-                        Image(systemName: "cart.fill") // Ícono de carrito
+                        Image(systemName: "cart.fill")
                         Text("Place Order")
                             .fontWeight(.bold)
                     }
@@ -50,15 +55,14 @@ struct CheckoutView: View {
             .navigationBarTitleDisplayMode(.inline)
             .scrollClipDisabled()
             .scrollBounceBehavior(.basedOnSize)
-            .alert("Thank you!", isPresented: $showingConfirmation) {
+            .alert(titleMessage, isPresented: $showingAlert) {
                 Button("OK") {
                     
-//                    navigator.path.removeLast(navigator.path.count - 1)
-//                    navigator.path.removeLast(navigator.path.count - 1)
                 }
             } message: {
-                Text(confirmationMessage)
+                Text(descriptionMessage)
             }
+ 
     }
     
     func placeOrder() async {
@@ -76,11 +80,15 @@ struct CheckoutView: View {
             let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
             
             let decodedOrder = try JSONDecoder().decode(Order.self, from: data)
-            confirmationMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
-            showingConfirmation = true
+            titleMessage = "Order placed!"
+            descriptionMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
+            showingAlert = true
             
         } catch {
             print("Checkout failed: \(error.localizedDescription)")
+            titleMessage = "Error!"
+            descriptionMessage = "Checkout failed: \(error.localizedDescription)"
+            showingAlert = true
         }
         
     }

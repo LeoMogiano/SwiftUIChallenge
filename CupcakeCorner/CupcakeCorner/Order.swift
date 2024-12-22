@@ -70,13 +70,30 @@ class Order: Codable, Hashable {
         case _zipCode = "zip"
     }
     
+    // MARK: - UserDefaults Integration
+    static let userDefaultsKey = "SavedOrder"
+    
+    func saveToUserDefaults() {
+        if let encoded = try? JSONEncoder().encode(self) {
+            UserDefaults.standard.set(encoded, forKey: Order.userDefaultsKey)
+        }
+    }
+    
+    static func loadFromUserDefaults() -> Order? {
+        guard let savedData = UserDefaults.standard.data(forKey: userDefaultsKey),
+              let decodedOrder = try? JSONDecoder().decode(Order.self, from: savedData) else {
+            return nil
+        }
+        return decodedOrder
+    }
+    
     // MARK: - Hashable
-        static func == (lhs: Order, rhs: Order) -> Bool {
-            return lhs.id == rhs.id
-        }
-        
-        func hash(into hasher: inout Hasher) {
-            hasher.combine(id)
-        }
+    static func == (lhs: Order, rhs: Order) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
     
 }

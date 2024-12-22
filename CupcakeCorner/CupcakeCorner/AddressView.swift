@@ -21,6 +21,9 @@ struct AddressView: View {
             Section {
                 NavigationLink("Check Out", value: NavigationWrapper(value: order, identifier: "checkout"))
             }.disabled(order.hasValidAddress == false)
+                .onDisappear {
+                            order.saveToUserDefaults()  // Guarda solo cuando la vista desaparezca
+                        }
         }
     }
 }
