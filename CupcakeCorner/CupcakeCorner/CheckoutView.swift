@@ -18,8 +18,6 @@ struct CheckoutView: View {
     @State private var showingAlert = false
     @State private var descriptionMessage: String = ""
     
-    
-    
     var body: some View {
         ScrollView{
             VStack{
