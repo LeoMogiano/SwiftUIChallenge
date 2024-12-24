@@ -81,3 +81,13 @@ La aplicación es un simple directorio de astronautas que permite a los usuarios
 | **Pantalla de inicio** | **Detalles de la misión** | **Detalles del astronauta** | **Vista de lista** |
 |:-----------------------:| :-----------------------:| :-----------------------:| :-----------------------:|
 | <img src="./Screenshots/s9.png" width="200"> | <img src="./Screenshots/s10.png" width="200"> | <img src="./Screenshots/s11.png" width="200"> | <img src="./Screenshots/s12.png" width="200"> |
+
+## 8. CupcakeCorner
+
+La aplicación es una sencilla app para pedir cupcakes que permite a los usuarios realizar pedidos y ver el resumen de su pedido.
+
+## Capturas de pantalla
+
+| **Pantalla Principal** | **Detalles de Dirección** | **Checkout** | **Alerta de Checkout** |
+|:-----------------------:| :-----------------------:| :-----------------------:| :-----------------------:|
+| <img src="./Screenshots/s13.png" width="200"> | <img src="./Screenshots/s14.png" width="200"> | <img src="./Screenshots/s15.png" width="200"> | <img src="./Screenshots/s16.png" width="200"> |

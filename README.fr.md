@@ -82,3 +82,13 @@ L'application est un simple annuaire d'astronautes qui permet aux utilisateurs d
 |:-----------------------:| :-----------------------:| :-----------------------:| :-----------------------:|
 | <img src="./Screenshots/s9.png" width="200"> | <img src="./Screenshots/s10.png" width="200"> | <img src="./Screenshots/s11.png" width="200"> | <img src="./Screenshots/s12.png" width="200"> |
 
+## 8. CupcakeCorner
+
+L'application est une application simple de commande de cupcakes qui permet aux utilisateurs de commander des cupcakes et de consulter le résumé de leur commande.
+
+## Captures d'écran
+
+| **Écran d'accueil** | **Détails de l'adresse** | **Paiement** | **Alerte de paiement** |
+|:-----------------------:| :-----------------------:| :-----------------------:| :-----------------------:|
+| <img src="./Screenshots/s13.png" width="200"> | <img src="./Screenshots/s14.png" width="200"> | <img src="./Screenshots/s15.png" width="200"> | <img src="./Screenshots/s16.png" width="200"> |
+
